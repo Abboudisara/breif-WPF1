@@ -30,7 +30,7 @@ namespace CLENER
         readonly double clientversion = 1.0;
         string updatePath;
         string packageFile;
-        WebClient webClient;
+       // WebClient webClient;
         public MainWindow()
         {
          InitializeComponent();
@@ -47,44 +47,52 @@ namespace CLENER
             menu2.Visibility = Visibility.Hidden;
             Annul.Visibility = Visibility.Hidden;
         }
-        public void checkupdate()
+
+
+
+
+
+        double clientVersion = 1.0;
+        WebClient webClient;
+        private void mettreajour_Click(object sender, RoutedEventArgs e)
         {
 
             webClient = new WebClient();
-            Uri webVersion = new Uri("https://pastebin.com/6ik2xT1A");
+            Uri webVersion = new Uri("https://sendeyo.com/up/d/7fed68c432");
             webClient.DownloadStringAsync(webVersion);
-            webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
+            webClient.DownloadStringCompleted += webClient_DownloadStringCompleted;
 
 
         }
 
-        public void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            string strWebversion = e.Result;
-             double webVersion = double.Parse(strWebversion);
+            string strWebVersion = e.Result;
+            double webVersion = double.Parse(strWebVersion);
 
-            if (clientversion < webVersion)
+            if (clientVersion < webVersion)
             {
-                MessageBox.Show("une nouvelle vaerssion doit étre télécharger");
-                updatePath = System.IO.Path.Combine(@"update\", strWebversion);
-                Uri package = new Uri("https://pastebin.com/edit/qTAt8w7f");
-                Directory.CreateDirectory(updatePath);
-                webClient.DownloadFileCompleted += webClient_DownloadFileCompleted;
-                webClient.DownloadFileAsync(package, packageFile);
+                MessageBox.Show("Une nouvelle version est disponible !");
+
+                Process.Start(@"C:\Users\Youcode\Desktop\breif-WPF1\update\bin\Release\netcoreapp3.1\update.exe");
+                this.Close();
+
+
+
+
 
             }
-            
+            else
+            {
+                MessageBox.Show(" l'application est déja à jour !");
+
+            }
         }
 
-        private void webClient_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            Process.Start(packageFile);
-            Application.Current.Shutdown();
-        }
 
 
-        // *********************Téléchargement dans progressbar
-        private void loadprogressbar()
+            // *********************Téléchargement dans progressbar
+            private void loadprogressbar()
 
         {
             pb.Visibility = Visibility.Hidden;
@@ -250,11 +258,7 @@ namespace CLENER
             MessageBox.Show("les repo bien nettoyer");
         }
 
-        private void mettreajour_Click(object sender, RoutedEventArgs e)
-        {
-
-            checkupdate();
-        }
+       
 
         private void liste_TextChanged(object sender, TextChangedEventArgs e)
         {

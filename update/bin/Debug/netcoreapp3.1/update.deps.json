@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "CLENER/1.0.0": {
+      "update/1.0.0": {
         "runtime": {
-          "CLENER.dll": {}
+          "update.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "CLENER/1.0.0": {
+    "update/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

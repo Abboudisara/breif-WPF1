@@ -23,7 +23,7 @@
         <Menu Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Background="Black" />
         <TextBlock Grid.Row="1" Text="      Bienvenu Dans Deuxieme Verssion" Foreground="White" FontSize="20" FontFamily="Bauhaus 93" Grid.ColumnSpan="3" Margin="172,0,148,56" Grid.RowSpan="2"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="CLEANE  U PC" FontSize="36" Foreground="White" FontFamily="Broadway"></TextBlock>
-        <Button Grid.Row="3" Content="OUI" x:Name="oui" Margin="24,10,28,10"  Background="#FFAE8C30" FontSize="20" Foreground="WhiteSmoke" />
+        <Button Grid.Row="3" Content="OUI" x:Name="oui" Margin="24,10,28,10"  Background="#FFAE8C30" FontSize="20" Foreground="WhiteSmoke" Click="oui_Click" />
         <Button Grid.Column="2" Content="NON" x:Name="non" Grid.Row="3" Margin="24,10,28,10" Background="#FFAE8C30" RenderTransformOrigin="1,0" FontSize="20" Foreground="White"></Button>
 
     </Grid>
